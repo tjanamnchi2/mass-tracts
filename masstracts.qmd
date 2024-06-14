@@ -1,0 +1,29 @@
+---
+title: "Mass Tracts"
+author: "Tanay Janmanchi"
+format: html
+execute:
+  echo: FALSE
+---
+```{r}
+#| message: FALSE
+#| label: setup
+
+library(tidyverse)
+
+```
+
+```{r}
+#| message: FALSE
+#| label: readin
+
+x <- read_csv(file = "data/mass-tracts.csv", show_col_types = FALSE)
+```
+
+```{r}
+#| message: FALSE
+#| label: plot
+
+x |> ggplot(aes(x = med_income)) + geom_density(alpha = 0.5, aes(fill = race)) + theme_minimal() + scale_x_continuous(labels = scales::dollar_format())
+```
+
